@@ -46,6 +46,13 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnInteractPressed()
     {
+        if (!enabled) return;
         _currentTarget?.Interact(this);
+    }
+
+    private void OnDisable()
+    {
+        _currentTarget = null;
+        _hintText.gameObject.SetActive(false);
     }
 }

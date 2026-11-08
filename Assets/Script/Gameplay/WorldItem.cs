@@ -9,8 +9,6 @@ public class WorldItem : MonoBehaviour, IInteractable
     public void Interact(PlayerInteractor interactor)
     {
         interactor.Inventory.Add(_data);
-        Debug.Log($"Подобрано: {_data.mushroomName}. Всего: {interactor.Inventory.GetCount(_data)}");
-
         Destroy(gameObject);
     }
 }

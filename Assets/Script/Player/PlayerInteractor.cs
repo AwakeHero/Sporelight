@@ -53,6 +53,8 @@ public class PlayerInteractor : MonoBehaviour
     private void OnDisable()
     {
         _currentTarget = null;
-        _hintText.gameObject.SetActive(false);
+
+        if (_hintText != null)
+            _hintText.gameObject.SetActive(false);
     }
 }

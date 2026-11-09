@@ -29,6 +29,7 @@ public class TradeUI : MonoBehaviour
     {
         if (_isOpen) return;
         _isOpen = true;
+
         _trader = trader;
         _interactor = interactor;
         _inventory = interactor.Inventory;
@@ -37,12 +38,15 @@ public class TradeUI : MonoBehaviour
         _look = interactor.GetComponent<PlayerLook>();
 
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         _movement.enabled = false;
         _look.enabled = false;
         _interactor.enabled = false;
 
         _inventory.Changed += Refresh;
-        _inputReader.Interacted += Close; 
+        _inputReader.Interacted += Close;
 
         gameObject.SetActive(true);
         Refresh();
@@ -60,6 +64,9 @@ public class TradeUI : MonoBehaviour
         _movement.enabled = true;
         _look.enabled = true;
         _interactor.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         _interactor = null;
         gameObject.SetActive(false);
